@@ -15,11 +15,3 @@ services:
       - 3306:3306
     volumes:
       - ./assets/data:/docker-entrypoint-initdb.d
-
-  phpmyadmin:
-    image: phpmyadmin
-    restart: always
-    ports:
-      - 3307:80
-    environment:
-      - PMA_ARBITRARY=1

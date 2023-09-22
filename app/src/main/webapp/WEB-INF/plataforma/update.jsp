@@ -13,11 +13,11 @@
             <input type="hidden" name="id" value="${plataforma.id}" />
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" class="form-control" value="${genero.nome}" />
+                <input type="text" name="nome" class="form-control" value="${plataforma.nome}" />
             </div>
             <div class="form-group">
                 <label for="fornecedor">Fornecedor:</label>
-                <input type="text" name="fornecedor" class="form-control" value="${genero.fornecedor}" />
+                <input type="text" name="fornecedor" class="form-control" value="${plataforma.fornecedor}" />
             </div>
             <br />
             <a href="/plataforma/list" class="btn btn-primary"> Voltar</a>

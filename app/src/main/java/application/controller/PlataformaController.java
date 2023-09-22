@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,12 +30,48 @@ public class PlataformaController {
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST) 
-    public String insert(@RequestParam("nome") String nome) {
+    public String insert(
+        @RequestParam("nome") String nome,
+        @RequestParam("fornecedor") String fornecedor
+    ) {
         Plataforma plataforma = new Plataforma();
         plataforma.setNome(nome);
+        plataforma.setFornecedor(fornecedor);
 
         plataformaRepo.save(plataforma);
 
         return "redirect:/plataforma/list";
     }
+
+    @RequestMapping("/update")
+    public String update(Model model, @RequestParam("id") int id) {
+        Optional<Plataforma> plataforma = plataformaRepo.findById(id);
+
+        if(plataforma.isPresent()) {
+            model.addAttribute("plataforma", plataforma.get());
+            return "/plataforma/update";
+        }
+
+        return "redirect:/genero/list";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(
+        @RequestParam("id") int id,
+        @RequestParam("nome") String nome,
+        @RequestParam("fornecedor") String fornecedor
+) {
+        Optional <Plataforma> plataforma = plataformaRepo.findById(id);
+
+        if(plataforma.isPresent()) {
+            plataforma.get().setNome(nome);
+            plataforma.get().setFornecedor(fornecedor);
+
+            plataformaRepo.save(plataforma.get());
+        }
+
+        return "redirect:/plataforma/list";
+    }
+
+
 }

@@ -3,16 +3,21 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Nova Plataforma</title>
+    <title>Editar Plataforma</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>Nova Plataforma</h1>
-        <form action="/plataforma/insert" method="post">
+        <h1>Editar Plataforma</h1>
+        <form action="/plataforma/update" method="post">
+            <input type="hidden" name="id" value="${plataforma.id}" />
             <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" class="form-control" />
+                <input type="text" name="nome" class="form-control" value="${genero.nome}" />
+            </div>
+            <div class="form-group">
+                <label for="fornecedor">Fornecedor:</label>
+                <input type="text" name="fornecedor" class="form-control" value="${genero.fornecedor}" />
             </div>
             <br />
             <a href="/plataforma/list" class="btn btn-primary"> Voltar</a>
